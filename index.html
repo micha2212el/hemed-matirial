@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hemed PDF Showcase</title>
+</head>
+<body>
+  <h1>PDF Files</h1>
+  <ul id="pdf-list"></ul>
+
+  <script>
+    // Automatically load and display all PDFs inside the "pdfs" folder
+    const pdfs = [
+      "lesson1.pdf",
+      "history-summary.pdf"
+    ];
+
+    const list = document.getElementById("pdf-list");
+    pdfs.forEach(name => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = "pdfs/" + name;
+      a.innerText = name;
+      a.target = "_blank";
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
