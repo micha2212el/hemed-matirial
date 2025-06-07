@@ -2,27 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PDF Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PDF List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: white;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+
+    li a {
+      text-decoration: none;
+      color: #007acc;
+      font-weight: bold;
+    }
+
+    li:hover {
+      background-color: #e6f7ff;
+    }
+  </style>
 </head>
 <body>
-  <h1>📚 List of PDFs</h1>
-  <ul id="pdf-list"></ul>
+  <h1>Available PDFs</h1>
+  <ul id="pdf-list">
+    <!-- PDF links will be injected here -->
+  </ul>
 
   <script>
-    fetch('pdfs.json')
-      .then(response => response.json())
-      .then(pdfs => {
-        const list = document.getElementById("pdf-list");
-        pdfs.forEach(name => {
-          const li = document.createElement("li");
-          const a = document.createElement("a");
-          a.href = "pdfs/" + name;
-          a.innerText = name;
-          a.target = "_blank";
-          li.appendChild(a);
-          list.appendChild(li);
-        });
-      });
+    const repoBase = "https://micha2212el.github.io/hemed-matirial/pdfs/";
+    const pdfFiles = [
+      "doc_1.pdf",
+      "doc_2.pdf",
+      "doc_3.pdf",
+      "doc_4.pdf",
+      "doc_5.pdf",
+      "doc_6.pdf",
+      "doc_7.pdf",
+      "doc_8.pdf",
+      "doc_9.pdf",
+      "doc_10.pdf",
+      "doc_11.pdf",
+    ];
+
+    const list = document.getElementById("pdf-list");
+
+    pdfFiles.forEach(file => {
+      const li = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = repoBase + file;
+      link.textContent = file;
+      link.target = "_blank";
+      li.appendChild(link);
+      list.appendChild(li);
+    });
   </script>
 </body>
 </html>
